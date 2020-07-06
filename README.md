@@ -8,7 +8,11 @@ Build a simple checkout form to collect card details to buy a fake ID of Jeffery
 
 ```npm start```
 
-2. Go to [localhost:3000/](localhost:3000/) if doesn't open automatically.
+2. Go to [localhost:3000/checkout](localhost:3000/chcekout) if doesn't open automatically.
+
+3. Install and set up the Stripe CLI
+
+4. In order to test the webhook locally, run the command $ stripe listen --forward-to http://localhost:4242/webhook
 
 
 ## Make a test payment to become "The Dude"
