@@ -12,7 +12,9 @@ Build a simple checkout form to collect card details to buy a fake ID of Jeffery
 
 3. Install and set up the Stripe CLI
 
-4. In order to test the webhook locally, run the command $ stripe listen --forward-to http://localhost:4242/webhook
+4. In order to test the webhook locally, run the command
+
+```$ stripe listen --forward-to http://localhost:4242/webhook```
 
 
 ## Make a test payment to become "The Dude"
