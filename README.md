@@ -16,4 +16,6 @@ Build a simple checkout form to collect card details to buy a fake ID of Jeffery
 -- Payment succeeds 4242 4242 4242 4242 
 -- Payment is declined 4000 0000 0000 9995
 
-## log.txt = log file for webhooks
+## Note
+
+log.txt = log file for webhooks
