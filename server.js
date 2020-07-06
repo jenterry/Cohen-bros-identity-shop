@@ -7,6 +7,9 @@ const stripe = require("stripe")("sk_test_3ekiVwK7JBA6xbWmHNK2xDAK0002noOdrs");
 app.use(express.static("."));
 app.use(express.json());
 
+fs = require('fs');
+
+
 const calculateOrderAmount = items => {
   // Replace this constant with a calculation of the order's amount
   // Calculate the order total on the server to prevent
@@ -25,8 +28,10 @@ app.post("/create-payment-intent", async (req, res) => {
   res.send({
     clientSecret: paymentIntent.client_secret
   });
-});
 
+
+
+});
 
 // Use body-parser to retrieve the raw body as a buffer
 const bodyParser = require('body-parser');
@@ -37,16 +42,19 @@ app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, respo
 
   try {
     event = JSON.parse(request.body);
+
   } catch (err) {
     response.status(400).send(`Webhook Error: ${err.message}`);
+
+ fs.writeFile('log.txt', err.message, function (err) {
+  if (err) return console.log(err);
+});
   }
 
   // Handle the event
   switch (event.type) {
     case 'payment_intent.succeeded':
       const paymentIntent = event.data.object;
-      //This is where the printing to log file code goes
-
       console.log('PaymentIntent was successful!');
       break;
     case 'payment_method.attached':
@@ -62,5 +70,7 @@ app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, respo
   // Return a 200 response to acknowledge receipt of the event
   response.json({received: true});
 });
+
+
 
 app.listen(4242, () => console.log('Running on port 4242'));
